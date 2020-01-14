@@ -165,5 +165,5 @@ my-website          # 최상위 디렉터리
 
 ```bash
 ./my-website-macos
-# Server run on localhost:8081
+# Server run on http://localhost:8081
 ```
