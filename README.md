@@ -64,8 +64,8 @@ yarn start
 
 #### 사용할 라이브러리
 
-- Koa.js
-- Pkg
+- [Koa.js](https://koajs.com/)
+- [Pkg](https://github.com/zeit/pkg)
 
 #### Koa 프로젝트 생성
 
