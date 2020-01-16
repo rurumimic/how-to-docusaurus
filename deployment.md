@@ -1,4 +1,3 @@
-
 # 배포
 
 ## Pkg를 이용한 배포
@@ -14,8 +13,9 @@
 
 ```bash
 cd my-website
-yarn init
-yarn add koa koa-static
+yarn init # node 프로젝트 초기화
+yarn add koa koa-static # koa 서버
+yarn add open # 브라우저 자동 열기
 ```
 
 `index.js` 파일을 작성한다.
@@ -24,14 +24,30 @@ yarn add koa koa-static
 const Koa = require('koa')
 const serve = require('koa-static')
 const path = require('path')
+const open = require('open')
 const app = new Koa()
 
+// React Client App
 app.use(serve(path.join(__dirname, '/client/build')))
 
-// Run server
-const port = process.env.PORT || 8081
+// Configuration
+const args = {}
+process.argv.slice(2, process.argv.length).forEach(option => {
+    if (option.slice(0,2) === '--') {
+        const arg = option.split('=');
+        const flag = arg[0].slice(2, arg[0].length);
+        const value = arg.length > 1 ? arg[1] : true;
+        args[flag] = value;
+    }
+  })
+const host = args.host || process.env.DOCUMENT_HOST || 'localhost' 
+const port = args.port || process.env.DOCUMENT_PORT || 8081
+
+// Run Server
 app.listen(port, () => {
-  console.log(`Server run on http://localhost:${port}`)
+  console.log(`Server run on http://${host}:${port}`)
+  console.log(`Launching the browser...`)
+  open(`http://${host}:${port}`) // Open browser
 })
 ```
 
@@ -100,11 +116,29 @@ my-website          # 최상위 디렉터리
 └── yarn.lock
 ```
 
+### 실행
+
 실행가능한 파일을 실행하고 브라우저에서 확인한다.
 
-[http://localhost:8081](http://localhost:8081)
+기본 서버 URL: [http://localhost:8081](http://localhost:8081)
 
 ```bash
 ./my-website-macos
 # Server run on http://localhost:8081
+```
+
+#### 실행 옵션 1
+
+```bash
+./my-website-macos --host=127.0.0.1
+./my-website-macos --port=80
+./my-website-macos --host=127.0.0.1 --port=80
+```
+
+#### 실행 옵션 2
+
+```bash
+export DOCUMENT_HOST=127.0.0.1
+export DOCUMENT_PORT=80
+./my-website-macos
 ```
