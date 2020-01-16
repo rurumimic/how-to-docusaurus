@@ -18,6 +18,8 @@ yarn add koa koa-static # koa 서버
 yarn add open # 브라우저 자동 열기
 ```
 
+`.gitignore` 파일을 작성한다: [Node.gitignore](Node.gitignore)
+
 `index.js` 파일을 작성한다.
 
 ```javascript
@@ -85,7 +87,7 @@ yarn add --dev pkg
 ```json
 {
   "scripts": {
-    "pkg": "cd client && yarn run build && cd .. && ./node_modules/.bin/pkg ."
+    "pkg": "cd client && yarn run build && cd .. && ./node_modules/.bin/pkg . --out-path pkg"
   },
   "bin": {
     "app": "index.js"
@@ -109,11 +111,10 @@ yarn run pkg -t node12-macos-x64,node12-win-x64
 
 ```bash
 my-website          # 최상위 디렉터리
-│   # ... 생략
-├── my-website-linux
-├── my-website-macos
-├── my-website-win.exe
-└── yarn.lock
+└── pkg/            # 패키지 디렉터리
+    ├── my-website-linux
+    ├── my-website-macos
+    └── my-website-win.exe
 ```
 
 ### 실행
@@ -123,16 +124,16 @@ my-website          # 최상위 디렉터리
 기본 서버 URL: [http://localhost:8081](http://localhost:8081)
 
 ```bash
-./my-website-macos
+./pkg/my-website-macos
 # Server run on http://localhost:8081
 ```
 
 #### 실행 옵션 1
 
 ```bash
-./my-website-macos --host=127.0.0.1
-./my-website-macos --port=80
-./my-website-macos --host=127.0.0.1 --port=80
+./pkg/my-website-macos --host=127.0.0.1
+./pkg/my-website-macos --port=80
+./pkg/my-website-macos --host=127.0.0.1 --port=80
 ```
 
 #### 실행 옵션 2
@@ -140,5 +141,5 @@ my-website          # 최상위 디렉터리
 ```bash
 export DOCUMENT_HOST=127.0.0.1
 export DOCUMENT_PORT=80
-./my-website-macos
+./pkg/my-website-macos
 ```
