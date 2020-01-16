@@ -69,7 +69,7 @@ yarn add --dev pkg
 ```json
 {
   "scripts": {
-    "pkg": "./node_modules/.bin/pkg ."
+    "pkg": "cd client && yarn run build && cd .. && ./node_modules/.bin/pkg ."
   },
   "bin": {
     "app": "index.js"
