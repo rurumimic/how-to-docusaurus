@@ -43,6 +43,18 @@ module.exports = {
 GIT_USER=<GITHUB_USERNAME> yarn deploy
 ```
 
+`master` 브랜치를 기준으로 `gh-pages` 브랜치가 생성되며 GitHub Page가 배포된다.
+
+```bash
+To https://github.com/<USERNAME>/<REPOSITORY>.git
+ * [new branch]      gh-pages -> gh-pages
+Website is live at: https://<USERNAME>.github.io/<REPOSITORY>
+```
+
+### 접속
+
+`https://<USERNAME>.github.io/<REPOSITORY>`
+
 ---
 
 ## Pkg를 이용한 배포
