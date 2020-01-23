@@ -1,5 +1,50 @@
 # 배포
 
+- [GitHub Pages 배포](#github-pages-배포)
+- [Pkg를 이용한 배포](#pkg를-이용한-배포)
+
+## GitHub Pages 배포
+
+[Deploying to GitHub Pages](https://v2.docusaurus.io/docs/deployment#deploying-to-github-pages)
+
+Docusaurus를 쉽게 GitHub Pages로 배포할 수 있다.
+
+### `docusaurus.config.js` 설정
+
+먼저 `docusaurus.config.js`를 수정하고 파라미터를 추가한다.
+
+- `organizationName`: GitHub 사용자나 조직. 예를 들어, 레포지터리 관리자는 GitHub username을 입력한다.
+- `projectName`: GitHub 레포지터리 이름.
+- `url`: GitHub Page 주소. 보통 `https://_username_.githube.io`
+- `baseUrl`: 프로젝트의 기본 URL. `/projectName/`.
+
+사용자 지정 도메인을 GitHub Pages에 지정한다면, `CNAME` 파일을 `static` 디렉터리에 생성한다. 이 파일은 `build` 디렉터리에 복사된다.
+
+```js
+module.exports = {
+  ...
+  url: 'https://endiliey.github.io', // Your website URL
+  baseUrl: '/',
+  projectName: 'endiliey.github.io',
+  organizationName: 'endiliey'
+  ...
+}
+```
+
+### 환경 설정
+
+- `GIT_USER`: 커밋 권한이 있는 GitHub 계정의 username.
+- (옵션) `USE_SSH`: `true`로 설정하면 SSH로 GitHub 레포지터리에 접근한다.
+- (옵션) `CURRENT_BRANCH`: 보통 `master` 브랜치가 배포된다. 아무것도 넣지 않을 경우 현재 브런치가 배포된다.
+
+### 배포
+
+```bash
+GIT_USER=<GITHUB_USERNAME> yarn deploy
+```
+
+---
+
 ## Pkg를 이용한 배포
 
 ### 사용할 라이브러리
