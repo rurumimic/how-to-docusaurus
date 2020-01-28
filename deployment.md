@@ -41,7 +41,8 @@ docker run --rm -p 80:80 my-website
 
 ```bash
 yarn add --dev gh-pages
-./node_modules/.bin/gh-pages -b master -d build
+yarn build
+./node_modules/.bin/gh-pages -d build
 ```
 
 ---
