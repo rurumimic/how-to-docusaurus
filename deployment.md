@@ -1,7 +1,50 @@
 # 배포
 
+- [Docker 배포](#docker-배포)
 - [GitHub Pages 배포](#github-pages-배포)
 - [Pkg를 이용한 배포](#pkg를-이용한-배포)
+
+## Docker 배포
+
+Dockerfile을 작성한다.
+
+```Dockerfile
+FROM nginx:alpine
+COPY ./build /usr/share/nginx/html
+```
+
+도커 이미지를 빌드한다.
+
+```bash
+docker build -t my-website .
+```
+
+도커 이미지를 확인한다.
+
+```bash
+docker images
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+my-website          latest              8e110898b42f        2 seconds ago       22.5MB
+nginx               alpine              48c8a7c47625        4 days ago          21.8MB
+```
+
+도커를 실행한다.
+
+```bash
+docker run --rm -p 80:80 my-website
+```
+
+---
+
+## GitHub Pages 빌드
+
+```bash
+yarn add --dev gh-pages
+./node_modules/.bin/gh-pages -b master -d build
+```
+
+---
 
 ## GitHub Pages 배포
 

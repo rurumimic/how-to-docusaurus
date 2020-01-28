@@ -7,6 +7,9 @@
 1. [Docusaurus 프로젝트 시작](#docusaurus-프로젝트-시작)
    1. [목차](#목차)
    1. [요구사항](#요구사항)
+      1. [macOS](#macos)
+      1. [Ubuntu](#ubuntu)
+      1. [CentOS](#centos)
    1. [프로젝트 생성](#프로젝트-생성)
       1. [프로젝트 구조](#프로젝트-구조)
    1. [개발 서버 실행](#개발-서버-실행)
@@ -18,9 +21,47 @@
 - Node.js >= 8.10.0
 - Yarn >= 1.5
 
+### macOS
+
+Install Node.js
+
 ```bash
 brew install node@12
+```
+
+Install Yarn
+
+```bash
 brew install yarn
+```
+
+### Ubuntu
+
+Install Node.js
+
+```bash
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+Install Yarn
+
+```bash
+sudo npm install -g yarn
+```
+
+### CentOS
+
+Install Node.js
+
+```bash
+curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+```
+
+Install Yarn
+
+```bash
+sudo npm install -g yarn
 ```
 
 ## 프로젝트 생성
@@ -50,6 +91,8 @@ npx @docusaurus/init@next init my-documents classic
 ```bash
 cd my-website
 yarn start
+# or
+yarn start --host 0.0.0.0 --port 8080
 ```
 
 서버를 실행하고 [http://localhost:3000](http://localhost:3000)으로 접속한다.
