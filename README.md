@@ -16,5 +16,6 @@ GitHub Page of this repository: [rurumimic.github.io/how-to-docusaurus](https://
 - [Docusaurus 사용](usage.md)
 - [배포](deployment.md)
   - Docker 배포
-  - GitHub Pages 배포
+  - GitHub Pages 배포 1
+  - GitHub Pages 배포 2
   - Pkg를 이용한 배포

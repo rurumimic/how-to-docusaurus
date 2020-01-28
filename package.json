@@ -6,7 +6,9 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy"
+    "deploy": "docusaurus deploy",
+    "cleanup": "rm -rf ./node_modules/gh-pages/.cache",
+    "gh-pages": "yarn run cleanup && yarn run build && gh-pages -d build"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.40",

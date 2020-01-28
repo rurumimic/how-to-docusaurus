@@ -1,7 +1,8 @@
 # 배포
 
 - [Docker 배포](#docker-배포)
-- [GitHub Pages 배포](#github-pages-배포)
+- [GitHub Pages 배포 1](#github-pages-배포-1)
+- [GitHub Pages 배포 2](#github-pages-배포-2)
 - [Pkg를 이용한 배포](#pkg를-이용한-배포)
 
 ## Docker 배포
@@ -37,17 +38,35 @@ docker run --rm -p 80:80 my-website
 
 ---
 
-## GitHub Pages 빌드
+## GitHub Pages 배포 1
+
+gh-pages 패키지를 추가한다.
 
 ```bash
 yarn add --dev gh-pages
-yarn build
-./node_modules/.bin/gh-pages -d build
+```
+
+`package.json`에 다음을 추가한다.
+
+```json
+{
+  "scripts": {
+    "cleanup": "rm -rf ./node_modules/gh-pages/.cache",
+    "gh-pages": "yarn run cleanup && yarn run build && gh-pages -d build"
+  }
+}
+```
+
+master 브랜치를 푸시 후에 다음 명령을 실행한다.  
+빌드한 프로젝트 폴더가 gh-pages 브랜치로 푸시된다.
+
+```bash
+yarn run gh-pages
 ```
 
 ---
 
-## GitHub Pages 배포
+## GitHub Pages 배포 2
 
 [Deploying to GitHub Pages](https://v2.docusaurus.io/docs/deployment#deploying-to-github-pages)
 
