@@ -5,9 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-module.exports = {
-  someSidebar: {
-    Docusaurus: ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
-  },
-};
+const fs = require('fs');
+const path = require('path');
+const sidebar = module.exports = {}; // 사이드바 모듈 생성
+const category = (label, items) => ({ type: 'category', label: label, items: items }); // 카테고리 빌더
+
+const docs = (prefix, items) => { // [`폴더/경로/문서`... ] 빌더
+  if (typeof items !== 'undefined') return items.map(item => prefix.concat(item)); // 경로 입력 간소화
+  else return docs(prefix, fs.readdirSync(path.join(__dirname, 'docs', prefix)).map(file => path.parse(file).name)); // 지정 폴더 카테고리 자동화
+}
+
+sidebar.someSidebar = {
+  Docusaurus: ['doc1', 'doc2', 'doc3'],
+  Features: ['mdx'],
+  Category: [],
+}
+
+sidebar.someSidebar['Category'] = [
+  category('하위 카테고리', docs('')),
+]
