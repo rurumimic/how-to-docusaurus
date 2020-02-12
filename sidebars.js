@@ -22,7 +22,7 @@ sidebar.someSidebar = {
   Category: [],
 }
 
-prefix = ''
+prefix = 'sub'
 sidebar.someSidebar['Category'] = [
   category('하위 카테고리', docs([prefix])),
 ]

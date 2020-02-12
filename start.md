@@ -64,6 +64,14 @@ Install Yarn
 sudo npm install -g yarn
 ```
 
+### Windows
+
+Install Node.js: [Download](https://nodejs.org/ko/download/)
+
+Install Yarn: [Download](https://classic.yarnpkg.com/en/docs/install#windows-stable)
+
+Install Git: [Download](https://git-scm.com/download/win)
+
 ## 프로젝트 생성
 
 명령어: `npx @docusaurus/init@next init [웹사이트 이름] [템플릿 이름]`
