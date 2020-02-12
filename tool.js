@@ -16,6 +16,7 @@ global.docs = (dirs, items) => {
     if (typeof items === 'undefined') { // (['폴더'], null): 지정 폴더 카테고리 자동화 -> docs(['폴더'], ['파일']) 반환
         return docs([prefix], 
             fs.readdirSync(path.join(__dirname, 'docs', prefix), { withFileTypes: true })
+            .filter(dirent => dirent.isFile())
             .filter(dirent => extension.includes(path.extname(dirent.name)))
             .map(dirent => path.parse(dirent.name).name));
     } else { // (['폴더'], ['파일']): 경로 입력 간소화

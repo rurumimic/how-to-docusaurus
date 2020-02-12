@@ -16,10 +16,8 @@ sidebar.someSidebar = {
   Category: [],
 }
 
-prefix = 'sub/'
+prefix = 'sub'
 sidebar.someSidebar['Category'] = [
   category('하위 카테고리', docs([prefix])),
-  category('하위 카테고리', docs([prefix, '/sub2/'])),
-  category('하위 카테고리', docs([prefix, '/sub2/'], ['egg'])),
-  category('하위 카테고리', docs(['sub/sub2/'])),
+  category('하위 카테고리', docs([prefix, 'sub2'], ['egg'])),
 ]
